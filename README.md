@@ -22,7 +22,7 @@ To get started with the Django Movie Rating API, follow these steps:
 1. Clone this repository to your local machine:
 
    ```sh
-   git clone <github-repo>
+   git clone https://github.com/MarcinIgna/django-movie-rating-app.git
    ```
 
 2. Navigate to the project directory:
