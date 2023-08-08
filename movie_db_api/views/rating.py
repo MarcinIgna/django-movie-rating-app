@@ -42,14 +42,6 @@ class RatingViewSet(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors)
-    # def post(self, request):
-    #     # Add a new rating for the authenticated user
-    #     serializer = RatingSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.validated_data['user'] = request.user
-    #         serializer.save()
-    #         return Response(serializer.data)
-    #     return Response(serializer.errors)
 
     def put(self, request, pk):
         # Update a rating for the authenticated user

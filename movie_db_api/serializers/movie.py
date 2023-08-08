@@ -8,10 +8,12 @@ from movie_db_api.models.rating import Rating
 # from movie_db_api.serializers.movie_rating_ser import MovieRatingSerializer
 
 class MovieSerializer(serializers.ModelSerializer):
+
     genre = GenreSerializer(many=True)
     movie_ratings = RatingSerializer(many=True, required=False)
     number_of_ratings = serializers.SerializerMethodField()
     
+    # get the average rating for the movie
     def get_number_of_ratings(self, obj):
         ratings = Rating.objects.filter(movie_id=obj.id)
         print(ratings)
@@ -29,7 +31,7 @@ class MovieSerializer(serializers.ModelSerializer):
         genre_data = validated_data.pop('genre', [])
         raiting_data = validated_data.pop('rating')
         movie = super().create(validated_data)
-        # movie_rating = MovieRating.objects.get_or_create(movie=movie, **raiting_data)
+        
         
         for genre in genre_data:
             genre_obj, _ = Genre.objects.get_or_create(name=genre['name'])
